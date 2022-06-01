@@ -35,6 +35,7 @@ const state = {
   themeOption: 'system',
   oldestArticles: false,
   disableImages: false,
+  disableArticlesListImages: false,
   fullArticleDefault: false,
   viewOriginalDefault: false,
   recentlyReadPreference: false,
@@ -92,6 +93,9 @@ const mutations = {
   },
   SET_IMAGE_PREFERENCE (state, data) {
     state.disableImages = data
+  },
+  SET_ARTICLES_LIST_IMAGE_PREFERENCE (state, data) {
+    state.disableArticlesListImages = data
   },
   SET_SORT_PREFERENCE (state, data) {
     state.oldestArticles = data
@@ -265,6 +269,10 @@ const actions = {
   async setImagePreference ({ commit }, data) {
     electronstore.storeSetSettingItem('set', 'settings.imagePreference', data === 'on')
     commit('SET_IMAGE_PREFERENCE', data === 'on')
+  },
+  async setArticlesListImagePreference ({ commit }, data) {
+    electronstore.storeSetSettingItem('set', 'settings.articlesListImagePreference', data === 'on')
+    commit('SET_ARTICLES_LIST_IMAGE_PREFERENCE', data === 'on')
   },
   async setSortPreference ({ dispatch, commit }, data) {
     electronstore.storeSetSettingItem('set', 'settings.oldestArticles', data)

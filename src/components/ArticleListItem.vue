@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     disableImages () {
-      return this.$store.state.Setting.disableImages
+      return this.$store.state.Setting.disableArticlesListImages
     },
     contentPreview () {
       return this.$store.state.Setting.contentPreview

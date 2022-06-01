@@ -77,6 +77,18 @@
                   @input="saveImagePreference"
                 />
               </b-form-group>
+              <b-form-group :label="getTranslatedLabel('Disable images in Articles list')">
+                <b-form-radio-group
+                  id="disableArticlesListImages"
+                  v-model="disableArticlesListImages"
+                  buttons
+                  button-variant="outline-primary"
+                  size="sm"
+                  :options="options"
+                  name="articlesListImagePref"
+                  @input="saveArticlesListImagePreference"
+                />
+              </b-form-group>
               <b-form-group :label="getTranslatedLabel('Automatically add to Recently Read')">
                 <b-form-radio-group
                   id="recentlyRead"
@@ -391,6 +403,7 @@ export default {
       darkMode: 'off',
       oldestArticles: 'off',
       disableImages: 'off',
+      disableArticlesListImages: 'off',
       recentlyRead: 'off',
       fullArticleDefault: 'off',
       viewOriginalDefault: 'off',
@@ -459,6 +472,7 @@ export default {
       this.setTheme(this.$store.state.Setting.themeOption)
       this.oldestArticles = this.$store.state.Setting.oldestArticles === 'on' ? 'on' : 'off'
       this.disableImages = this.$store.state.Setting.disableImages ? 'on' : 'off'
+      this.disableArticlesListImages = this.$store.state.Setting.disableArticlesListImages ? 'on' : 'off'
       this.recentlyRead = this.$store.state.Setting.recentlyReadPreference ? 'on' : 'off'
       this.fullArticleDefault = this.$store.state.Setting.fullArticleDefault ? 'on' : 'off'
       this.viewOriginalDefault = this.$store.state.Setting.viewOriginalDefault ? 'on' : 'off'
@@ -562,6 +576,16 @@ export default {
     saveImagePreference (preference) {
       this.$store.dispatch('setImagePreference', preference)
       this.$toasted.show('Image preference changed.', {
+        theme: 'outline',
+        position: 'top-center',
+        duration: 3000
+      })
+      bus.$emit('change-article-list', { type: null })
+      this.hideModal()
+    },
+    saveArticlesListImagePreference (preference) {
+      this.$store.dispatch('setArticlesListImagePreference', preference)
+      this.$toasted.show('Articles list image preference changed.', {
         theme: 'outline',
         position: 'top-center',
         duration: 3000

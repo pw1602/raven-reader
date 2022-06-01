@@ -147,5 +147,6 @@
     "Are you sure you want to mark all articles as unread?": "Czy na pewno chcesz oznaczyć wszystkie artykuły jako nieprzeczytane?",
     "Mark all unread": "Oznacz wszystko jako nieprzeczytane",
     "Article list actions": "Akcje listy artykułów",
-    "Language": "Język"
+    "Language": "Język",
+	"Disable images in Articles list":"Wyłącz obrazy na liście Artykułów"
 }

@@ -382,6 +382,7 @@ ipcMain.on('get-settings', (event, arg) => {
   state.themeOption = store.get('settings.theme_option', 'system')
   state.oldestArticles = store.get('settings.oldestArticles', false)
   state.disableImages = store.get('settings.imagePreference', false)
+  state.disableArticlesListImages = store.get('settings.disableArticlesListImages', false)
   state.fullArticleDefault = store.get('settings.fullArticlePreference', false)
   state.viewOriginalDefault = store.get('settings.viewOriginalPreference', false)
   state.recentlyReadPreference = store.get('settings.recentlyReadPreference', false)
